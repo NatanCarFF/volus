@@ -325,15 +325,25 @@
             z-index: 1000;
         }
 
+        /* Added for the FAB link */
+        .fab-link {
+            text-decoration: none; /* Removes underline from the link */
+            color: inherit; /* Ensures the icon color is inherited */
+            display: block; /* Make the link a block element to contain the fab div */
+            width: 60px; /* Match fab width */
+            height: 60px; /* Match fab height */
+            border-radius: 50%; /* Make it circular */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Keep the shadow on the link */
+        }
+
         .fab {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px;
-            height: 60px;
+            width: 100%; /* Take full width of parent (fab-link) */
+            height: 100%; /* Take full height of parent (fab-link) */
             background-color: var(--volus-green);
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -396,7 +406,7 @@
                 bottom: 20px;
                 right: 20px;
             }
-            .fab {
+            .fab-link { /* Adjusted for responsiveness */
                 width: 55px;
                 height: 55px;
             }
@@ -439,7 +449,7 @@
                 bottom: 10px;
                 right: 10px;
             }
-            .fab {
+            .fab-link { /* Adjusted for responsiveness */
                 width: 45px;
                 height: 45px;
             }
@@ -491,7 +501,9 @@
             <i class="fas fa-sign-out-alt icon"></i> Sair do aplicativo
         </div>
     </div>
-    <div class="overlay" id="overlay"></div> <main class="main-content">
+    <div class="overlay" id="overlay"></div> 
+    
+    <main class="main-content">
         <div class="balance-card">
             <div class="saldo-title">
                 <span class="dot"></span> Saldo
@@ -538,9 +550,11 @@
     </main>
 
     <div class="fab-container">
-        <div class="fab">
-            <i class="fas fa-comment-dots icon"></i>
-        </div>
+        <a href="https://natancarff.github.io/volus/paginas/perguntas.html" target="_blank" class="fab-link">
+            <div class="fab">
+                <i class="fas fa-comment-dots icon"></i>
+            </div>
+        </a>
     </div>
 
     <script>

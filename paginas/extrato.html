@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrato</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Cor de fundo similar ao app */
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .header a {
+            position: absolute;
+            left: 20px;
+            text-decoration: none;
+            color: #32a852; /* Cor verde da seta */
+            font-size: 1.8em;
+            line-height: 1;
+            transform: translateY(-2px); /* Ajuste vertical para alinhar com o texto */
+            -webkit-tap-highlight-color: transparent; /* Remove highlight on tap */
+        }
+
+        .month-title {
+            padding: 20px;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .summary-box {
+            background-color: #32a852; /* Verde principal */
+            color: #fff;
+            padding: 25px 20px;
+            margin: 0 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .summary-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .summary-date {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .transactions-list {
+            background-color: #fff;
+            margin: 20px 20px 0;
+            border-radius: 12px;
+            overflow: hidden; /* Garante que os cantos arredondados funcionem */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-details {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .transaction-date-time {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 3px;
+        }
+
+        .transaction-description {
+            font-weight: 500;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        .transaction-category {
+            font-size: 0.75em;
+            color: #888;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            padding: 3px 6px;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .transaction-amount {
+            font-weight: 500;
+            color: #333;
+            font-size: 1.05em;
+            margin-left: 10px;
+        }
+
+        .transaction-amount.negative {
+            /* No change from default for expenses */
+        }
+
+        /* Specific style for "SALDO E F A CREDITO" */
+        .credit-balance .transaction-description {
+            color: #32a852; /* Green for description */
+            font-weight: 600;
+        }
+        .credit-balance .transaction-amount {
+            color: #32a852; /* Green for amount */
+        }
+        .credit-balance .transaction-category {
+            background-color: #d4f7db; /* Lighter green background */
+            color: #32a852; /* Darker green text */
+        }
+
+
+        .footer-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: 600;
+            background-color: #fff; /* Se precisar de fundo próprio */
+            color: #333;
+        }
+
+        .footer-total-amount {
+            color: #32a852; /* Verde para o valor total de gastos */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="https://natancarff.github.io/volus/paginas/home3.html">&#x2190;</a> <span>Extrato</span>
+    </div>
+
+    <div class="month-title">
+        Maio
+    </div>
+
+    <div class="summary-box">
+        <div class="summary-value">R$ 216,29</div>
+        <div class="summary-date">FECHAMENTO EM 31 MAI 25</div>
+    </div>
+
+    <div class="transactions-list">
+        <div class="transaction-item">
+            <div class="transaction-details">
+                <div class="transaction-date-time">12 MAI<br>12:28</div>
+                <div class="transaction-description">MP *CASASOARES</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount negative">6,00</div>
+        </div>
+
+        <div class="transaction-item">
+            <div class="transaction-details">
+                <div class="transaction-date-time">04 MAI<br>10:52</div>
+                <div class="transaction-description">MP *MAIAFRANGOS</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount negative">38,00</div>
+        </div>
+
+        <div class="transaction-item">
+            <div class="transaction-details">
+                <div class="transaction-date-time">03 MAI<br>11:56</div>
+                <div class="transaction-description">MP *ADERCIO</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount negative">12,00</div>
+        </div>
+
+        <div class="transaction-item">
+            <div class="transaction-details">
+                <div class="transaction-date-time">03 MAI<br>10:31</div>
+                <div class="transaction-description">ASSAI ATACADISTA</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount negative">98,48</div>
+        </div>
+
+        <div class="transaction-item">
+            <div class="transaction-details">
+                <div class="transaction-date-time">01 MAI<br>08:26</div>
+                <div class="transaction-description">LIDER AUGUSTO MONTE...</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount negative">61,81</div>
+        </div>
+
+        <div class="transaction-item credit-balance">
+            <div class="transaction-details">
+                <div class="transaction-date-time">01 MAI<br>01:27</div>
+                <div class="transaction-description">SALDO E F A CREDITO</div>
+                <div class="transaction-category">ALIMENTAÇÃO</div>
+            </div>
+            <div class="transaction-amount">216,32</div>
+        </div>
+    </div>
+
+    <div class="footer-summary">
+        <span>Valor total de gastos</span>
+        <span class="footer-total-amount">R$ 216,29</span>
+    </div>
+
+</body>
+</html>

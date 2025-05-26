@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alterar Senha</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f2f5;
+  }
+  .header {
+    background-color: white;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+  .back-button {
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .container {
+    background-color: white;
+    width: 90%;
+    max-width: 375px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .card-info {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    justify-content: space-between;
+  }
+  .input-group input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  .input-group .icon {
+    color: #aaa;
+    cursor: pointer;
+  }
+  .info-text {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .warning {
+    background-color: #fff3cd;
+    color: #85640a;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ffeeba;
+  }
+  .warning-icon {
+    font-size: 20px;
+  }
+  .fee-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: #333;
+  }
+  .confirm-button {
+    background-color: #8ac249;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="https://natancarff.github.io/volus/paginas/home3.html" class="back-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18L9 12L15 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="header-title">Alterar senha</div>
+  </div>
+
+  <div class="container">
+    <div class="card-info">
+      <span>5090 ******* 9227</span>
+      <span style="background-color: #5cb85c; color: white; padding: 5px; border-radius: 3px; font-size: 12px;">FLEXÍVEL</span>
+    </div>
+    <h2>Crie a nova senha do seu cartão.</h2>
+    <p class="info-text">Sua senha deve conter:<br>
+    • 4 dígitos.<br>
+    • Não deve conter sequências ou 4 números iguais, por exemplo: 1234 ou 1111.</p>
+
+    <div class="input-group">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 17C15.866 17 19 13.866 19 10C19 6.13401 15.866 3 12 3C8.13401 3 5 6.13401 5 10C5 13.866 8.13401 17 12 17Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 13V17" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 21H16" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <input type="password" placeholder="Digite sua nova senha *" />
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.94 17.94L6.06 6.06M10 6H4C3.44772 6 3 6.44772 3 7V17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17V11M14 11H21V4C21 3.44772 20.5523 3 20 3H14V11Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 12C9.20914 12 11 10.2091 11 8C11 5.79086 9.20914 4 7 4C4.79086 4 3 5.79086 3 8C3 10.2091 4.79086 12 7 12Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="input-group">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 17C15.866 17 19 13.866 19 10C19 6.13401 15.866 3 12 3C8.13401 3 5 6.13401 5 10C5 13.866 8.13401 17 12 17Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 13V17" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 21H16" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <input type="password" placeholder="Confirme a nova senha *" />
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.94 17.94L6.06 6.06M10 6H4C3.44772 6 3 6.44772 3 7V17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17V11M14 11H21V4C21 3.44772 20.5523 3 20 3H14V11Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 12C9.20914 12 11 10.2091 11 8C11 5.79086 9.20914 4 7 4C4.79086 4 3 5.79086 3 8C3 10.2091 4.79086 12 7 12Z" stroke="#8AC249" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="warning">
+      <svg class="warning-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 16V12" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 8H12.01" stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p style="font-size: 14px;">Para efetivar a nova senha, realize ao menos 3 tentativas de transação com a nova senha.</p>
+    </div>
+
+    <div class="fee-info">
+      <span>Valor da tarifa:</span>
+      <span style="color: #8AC249; font-weight: bold;">Gratuito</span>
+    </div>
+
+    <button class="confirm-button">Confirmar</button>
+  </div>
+
+</body>
+</html>

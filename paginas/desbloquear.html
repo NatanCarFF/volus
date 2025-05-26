@@ -7,45 +7,80 @@
     <style>
         body {
             display: flex;
-            flex-direction: column; /* Arrange items vertically */
-            justify-content: center; /* Center content vertically */
+            flex-direction: column; /* Stack items vertically */
+            justify-content: space-between; /* Pushes first item to top, last to bottom */
             align-items: center;     /* Center content horizontally */
             min-height: 100vh;       /* Take full viewport height */
             margin: 0;               /* Remove default body margin */
             background-color: #ffffff; /* White background */
             font-family: Arial, sans-serif; /* Basic font for the button */
+            padding: 5vh 0;          /* Add vertical padding to prevent items from touching edges */
+            box-sizing: border-box;  /* Ensure padding is included in height */
         }
 
         .logo-container {
-            margin-bottom: 50px; /* Space between logo and button */
-            /* You can adjust max-width to control the overall size of the logo */
-            max-width: 300px; /* Example: adjust this to your preferred size */
+            /* No margin-bottom needed here as justify-content handles separation */
+            max-width: 300px; /* Adjust this to your preferred logo size on desktop */
             height: auto;
+            flex-shrink: 0; /* Prevent logo from shrinking on small screens */
         }
 
         .logo-container img {
-            width: 100%;    /* Make the image fill its container */
-            height: auto;   /* Maintain aspect ratio */
-            display: block; /* Remove extra space below image */
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .unlock-button {
-            padding: 15px 40px; /* Padding inside the button */
-            font-size: 1.2em;   /* Text size */
-            font-weight: bold;  /* Bold text */
-            color: #ffffff;     /* White text color */
-            background-color: #72B84D; /* Green color similar to the logo */
-            border: none;       /* No border */
-            border-radius: 8px; /* Slightly rounded corners */
-            cursor: pointer;    /* Change cursor to pointer on hover */
-            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-            text-decoration: none; /* Remove underline for anchor tag if used as a link */
-            display: inline-block; /* Allows padding and transitions for anchor tag */
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #72B84D;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            flex-shrink: 0; /* Prevent button from shrinking on small screens */
+            margin-top: auto; /* Not strictly needed with space-between, but good practice if more items are added */
         }
 
         .unlock-button:hover {
-            background-color: #60A53F; /* Slightly darker green on hover */
+            background-color: #60A53F;
         }
+
+        /* --- Media Query for Mobile Screens --- */
+        @media (max-width: 768px) { /* Applies to screens 768px wide or less */
+            body {
+                padding: 10vh 0; /* Adjust vertical padding for mobile */
+            }
+
+            .logo-container {
+                max-width: 200px; /* Slightly smaller logo on mobile */
+            }
+
+            .unlock-button {
+                width: 85%; /* Make button wider on mobile */
+                max-width: 350px; /* Limit max width for large phones */
+                padding: 18px 0; /* More vertical padding, full width for text */
+            }
+        }
+
+        /* Further fine-tuning for very small phones */
+        @media (max-width: 480px) {
+            body {
+                padding: 8vh 0; /* Less padding on very small screens to fit content */
+            }
+            .logo-container {
+                max-width: 180px;
+            }
+            .unlock-button {
+                 padding: 15px 0;
+            }
+        }
+
     </style>
 </head>
 <body>

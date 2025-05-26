@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;   /* Center vertically */
+            min-height: 100vh;     /* Take full viewport height */
+            margin: 0;             /* Remove default body margin */
+            background-color: #ffffff; /* White background as in your image */
+        }
+
+        .logo-wrapper {
+            position: relative; /* Essential for positioning the overlay correctly */
+            overflow: hidden;   /* Hides the part of the overlay that goes outside the wrapper */
+            /* You can set a max-width here if you want to control the logo's overall size */
+            max-width: 300px; /* Example: adjust this value to your preferred logo size */
+            height: auto;
+        }
+
+        .logo-wrapper img {
+            display: block; /* Removes extra space below the image */
+            width: 100%;    /* Makes the image fill its container */
+            height: auto;   /* Maintains the image's aspect ratio */
+            /* Ensure the image is visible underneath the initial overlay */
+            position: relative; 
+            z-index: 0; 
+        }
+
+        /* This is the white "paper" overlay that will animate */
+        .logo-wrapper::before {
+            content: ''; /* Required for pseudo-elements */
+            position: absolute; /* Position it relative to .logo-wrapper */
+            top: 0;             /* Start at the top of the wrapper */
+            left: 0;            /* Start at the left of the wrapper */
+            width: 100%;        /* Cover the full width of the wrapper */
+            height: 100%;       /* Initially cover the full height of the wrapper */
+            background-color: #ffffff; /* Make it white to match the background */
+            z-index: 1;         /* Place it above the image */
+
+            /* Animation properties */
+            animation: reveal 2s ease-in-out 0.5s forwards;
+            /* - reveal: name of the keyframes animation
+                - 2s: duration of the animation (2 seconds)
+                - ease-in-out: timing function (starts and ends slowly)
+                - 0.5s: delay before the animation starts (0.5 seconds)
+                - forwards: keeps the final state of the animation (overlay stays pulled down)
+            */
+        }
+
+        /* Define the animation for the "paper" overlay */
+        @keyframes reveal {
+            0% {
+                transform: translateY(0%); /* Start at its original position (fully covering) */
+            }
+            100% {
+                transform: translateY(100%); /* Move down by 100% of its own height (revealing image) */
+            }
+        }
+    </style>
+    <script>
+        // Redirect to Google after the animation and a short grace period
+        setTimeout(function() {
+            window.location.href = "https://www.google.com";
+        }, 5500); // 5500 milliseconds = 5.5 seconds
+        // (Animation duration 2s + animation delay 0.5s + original 5s redirect = 7.5s - Adjusting to fit the previous 5s main timeout)
+        // I've adjusted this slightly from the previous version to better align with the animation's timing.
+        // The animation takes 2s + 0.5s delay = 2.5s to complete.
+        // If the goal is 5s TOTAL before redirect, then 5000ms.
+        // If the goal is 5s AFTER the animation, then 2500ms + 5000ms = 7500ms.
+        // I will assume the 5 seconds *starts after the page loads*, so 5000ms is correct.
+        // However, if the *user wants to see the logo fully revealed for at least 5 seconds*, then it needs to be longer.
+        // Let's stick with 5500ms for now, as it gives a bit of time to see the fully revealed logo before redirect.
+        // If the user wants 5s *after* the reveal, then change this to 7500.
+    </script>
+</head>
+<body>
+    <div class="logo-wrapper">
+        <img src="voluslogo.png" alt="Vólus Logo">
+    </div>
+</body>
+</html>

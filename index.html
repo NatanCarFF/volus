@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Make sure it takes full viewport height */
+            margin: 0; /* Remove default body margin */
+            background-color: #ffffff; /* White background as in the image */
+        }
+        .logo-container {
+            /* You can adjust max-width to control the overall size of the logo on the page */
+            max-width: 300px; /* Example: adjust this to your preferred size */
+            height: auto;
+            text-align: center; /* Ensures the image is centered within its container if it's smaller */
+        }
+        .logo-container img {
+            width: 100%; /* Make the image fill its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+        }
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://www.google.com";
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="imagens/voluslogo.png" alt="Vólus Logo">
+    </div>
+</body>
+</html>

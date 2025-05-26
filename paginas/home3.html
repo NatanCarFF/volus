@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --volus-green: #72B84D;
+            --dark-gray-card: #333333; /* Darker gray for the card */
+            --light-gray-bg: #f5f5f5; /* For the main background if needed */
+            --text-color: #333333;
+            --light-text-color: #ffffff;
+            --border-radius-card: 15px;
+            --border-radius-button: 10px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--light-gray-bg);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        .header .logo-container {
+            max-width: 90px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .header .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .header .icons-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .header .icon {
+            font-size: 1.6em;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* --- Main Content Area --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- Balance Card --- */
+        .balance-card {
+            background-color: var(--dark-gray-card);
+            color: var(--light-text-color);
+            border-radius: var(--border-radius-card);
+            padding: 20px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .balance-card .saldo-title {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .saldo-title .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--volus-green);
+            border-radius: 50%;
+        }
+
+        .balance-card .amount {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            /* Added for hiding balance */
+            white-space: nowrap; /* Prevent wrap when text changes to dots */
+            overflow: hidden; /* Hide overflow if dots become too long */
+        }
+
+        .balance-card .card-details {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .balance-card .card-details span {
+            font-weight: bold;
+        }
+        .balance-card .card-name,
+        .balance-card .company-name {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .elo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #000;
+            color: var(--volus-green);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .elo-badge span {
+            color: #ffffff;
+            font-size: 0.7em;
+            background-color: var(--volus-green);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* --- Indicator Dot below card --- */
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--volus-green);
+            border-radius: 50%;
+            margin-bottom: 30px;
+        }
+
+        /* --- Action Grid --- */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .grid-item {
+            background-color: #ffffff;
+            border-radius: var(--border-radius-button);
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item .icon {
+            font-size: 2.2em;
+            color: var(--volus-green);
+            margin-bottom: 10px;
+        }
+
+        .grid-item .text {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* --- Floating Action Button (FAB) Styles --- */
+        .fab-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .fab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--volus-green);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fab:hover {
+            background-color: #60A53F;
+        }
+
+        .fab .icon {
+            font-size: 1.8em;
+            color: #ffffff;
+        }
+
+        /* --- Media Queries for smaller screens --- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+            .header .logo-container {
+                max-width: 80px;
+            }
+            .header .icon {
+                font-size: 1.4em;
+            }
+            .main-content {
+                padding: 15px;
+            }
+            .balance-card {
+                padding: 15px;
+            }
+            .balance-card .amount {
+                font-size: 2em;
+            }
+            .balance-card .card-details,
+            .balance-card .card-name,
+            .balance-card .company-name {
+                font-size: 0.85em;
+            }
+            .elo-badge {
+                padding: 4px 8px;
+                font-size: 0.7em;
+            }
+            .elo-badge span {
+                font-size: 0.6em;
+            }
+
+            .action-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                max-width: 320px;
+            }
+            .grid-item .icon {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            .grid-item .text {
+                font-size: 0.8em;
+            }
+            .fab-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            .fab {
+                width: 55px;
+                height: 55px;
+            }
+            .fab .icon {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 8px 12px;
+            }
+            .header .logo-container {
+                max-width: 70px;
+            }
+            .header .icon {
+                font-size: 1.3em;
+            }
+            .main-content {
+                padding: 10px;
+            }
+            .balance-card .amount {
+                font-size: 1.8em;
+            }
+            .action-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                max-width: 300px;
+            }
+            .grid-item {
+                padding: 12px 8px;
+            }
+            .grid-item .icon {
+                font-size: 1.6em;
+            }
+            .grid-item .text {
+                font-size: 0.75em;
+            }
+            .fab-container {
+                bottom: 10px;
+                right: 10px;
+            }
+            .fab {
+                width: 45px;
+                height: 45px;
+            }
+            .fab .icon {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="path/to/your/volus_logo2.png" alt="Vólus Logo">
+        </div>
+        <div class="icons-right">
+            <i class="fas fa-eye icon" id="toggleBalanceVisibility"></i> 
+            <i class="fas fa-bars icon"></i>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="balance-card">
+            <div class="saldo-title">
+                <span class="dot"></span> Saldo
+            </div>
+            <div class="amount" id="balanceAmount">R$ 5890,03</div> 
+            <div class="card-details">
+                <span>5090 .... .... 9227</span>
+            </div>
+            <div class="card-name">NATANAEL CARVALHO SILVA</div>
+            <div class="company-name">WLAN TELECOM LTDA</div>
+            <div class="elo-badge">
+                elo <span>FLEXIVEL</span>
+            </div>
+        </div>
+
+        <div class="indicator-dot"></div>
+
+        <div class="action-grid">
+            <div class="grid-item">
+                <i class="fas fa-qrcode icon"></i>
+                <div class="text">Pagar com QrCode</div>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-credit-card icon"></i>
+                <div class="text">Cartão Virtual</div>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-shopping-cart icon"></i>
+                <div class="text">Vólus Shop</div>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-list-alt icon"></i>
+                <div class="text">Extrato</div>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-sliders-h icon"></i>
+                <div class="text">Configurar Saldo Flexivel</div>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-shield-alt icon"></i>
+                <div class="text">Nova Senha</div>
+            </div>
+        </div>
+    </main>
+
+    <div class="fab-container">
+        <div class="fab">
+            <i class="fas fa-comment-dots icon"></i>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the elements
+        const toggleBalanceIcon = document.getElementById('toggleBalanceVisibility');
+        const balanceAmountElement = document.getElementById('balanceAmount');
+
+        // Store the original balance
+        const originalBalance = balanceAmountElement.textContent;
+        let isBalanceHidden = false; // Initial state: balance is visible
+
+        // Function to toggle balance visibility
+        toggleBalanceIcon.addEventListener('click', function() {
+            if (isBalanceHidden) {
+                // Show balance
+                balanceAmountElement.textContent = originalBalance;
+                toggleBalanceIcon.classList.remove('fa-eye-slash');
+                toggleBalanceIcon.classList.add('fa-eye');
+                isBalanceHidden = false;
+            } else {
+                // Hide balance
+                balanceAmountElement.textContent = 'R$ ••••••••';
+                toggleBalanceIcon.classList.remove('fa-eye');
+                toggleBalanceIcon.classList.add('fa-eye-slash');
+                isBalanceHidden = true;
+            }
+        });
+    </script>
+
+</body>
+</html>

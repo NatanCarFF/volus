@@ -45,6 +45,8 @@
             max-width: 90px;
             height: auto;
             flex-shrink: 0;
+            /* Added cursor to indicate clickability */
+            cursor: pointer;
         }
 
         .header .logo-container img {
@@ -451,11 +453,14 @@
 
     <header class="header">
         <div class="logo-container">
-            <img src="voluslogo2.png" alt="Vólus Logo">
-        </div>
+            <a href="https://natancarff.github.io/volus/paginas/home.html" target="_blank">
+                <img src="voluslogo2.png" alt="Vólus Logo">
+            </a>
+            </div>
         <div class="icons-right">
             <i class="fas fa-eye icon" id="toggleBalanceVisibility"></i>
-            <i class="fas fa-bars icon" id="openSidebar"></i> </div>
+            <i class="fas fa-bars icon" id="openSidebar"></i>
+        </div>
     </header>
 
     <div class="sidebar" id="sidebar">

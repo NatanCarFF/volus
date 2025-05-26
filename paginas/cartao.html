@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Virtual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 20px;
+            color: #333;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        /* Removido o estilo do .back-arrow que era um div para estilizar o link a */
+        .header .back-arrow-link { /* Novo seletor para o link */
+            position: absolute;
+            left: 20px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #555;
+            text-decoration: none; /* Remove sublinhado padrão do link */
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+
+        .account-info {
+            background-color: #333;
+            color: #fff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 30px;
+            width: 90%;
+            max-width: 380px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .account-info .flexivel-tag {
+            background-color: #28a745; /* A color close to the image's green */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .virtual-card-container {
+            background-color: #1a1a1a; /* Darker background for the card */
+            color: #fff;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 360px;
+            height: 220px; /* Approximate height of a credit card */
+            margin-top: 40px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .virtual-card-container .details-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 14px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .virtual-card-container .card-type {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        .virtual-card-container .card-holder-name {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: auto; /* Pushes content to the bottom */
+            text-transform: capitalize;
+        }
+
+        .virtual-card-container .card-number {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .virtual-card-container .elo-logo {
+            align-self: flex-end;
+            margin-top: 15px;
+        }
+
+        .virtual-card-container .elo-logo img {
+            width: 70px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        .add-new-card-button {
+            background-color: #333;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 40px;
+            color: #fff;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-new-card-text {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://natancarff.github.io/volus/paginas/home3.html" class="back-arrow-link">&larr;</a>
+        <h1>Cartão Virtual</h1>
+    </div>
+
+    <div class="account-info">
+        <span>5090 ******** 9227</span>
+        <span class="flexivel-tag">FLEXÍVEL</span>
+    </div>
+
+    <div class="virtual-card-container">
+        <button class="details-button">detalhes</button>
+        <div class="card-type">VIRTUAL</div>
+        <div class="card-holder-name">natanael c silva</div>
+        <div class="card-number">.... 5778</div>
+        <div class="elo-logo">
+            <img src="elo.png" alt="Elo Logo">
+        </div>
+    </div>
+
+    <div class="add-new-card-button">
+        +
+    </div>
+    <div class="add-new-card-text">
+        Novo cartão
+    </div>
+</body>
+</html>

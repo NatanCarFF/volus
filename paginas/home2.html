@@ -14,6 +14,7 @@
             --light-text-color: #ffffff;
             --border-radius-card: 15px;
             --border-radius-button: 10px;
+            --sidebar-width: 75%; /* Adjust as needed */
         }
 
         body {
@@ -21,10 +22,10 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-            background-color: var(--light-gray-bg); /* Use light grey for the overall background */
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Similar to system font */
+            background-color: var(--light-gray-bg);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: var(--text-color);
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden; /* Prevent horizontal scroll when sidebar is off-screen */
         }
 
         /* --- Header Styles --- */
@@ -35,11 +36,13 @@
             padding: 15px 20px;
             width: 100%;
             box-sizing: border-box;
-            background-color: #ffffff; /* Header background white */
+            background-color: #ffffff;
+            position: relative; /* Needed for z-index if sidebar is behind */
+            z-index: 200; /* Ensure header is above main content */
         }
 
         .header .logo-container {
-            max-width: 90px; /* Adjust logo size in header */
+            max-width: 90px;
             height: auto;
             flex-shrink: 0;
         }
@@ -53,45 +56,166 @@
         .header .icons-right {
             display: flex;
             align-items: center;
-            gap: 25px; /* Space between eye and hamburger icons */
+            gap: 25px;
         }
 
         .header .icon {
-            font-size: 1.6em; /* Size of the icons */
+            font-size: 1.6em;
             color: var(--text-color);
             cursor: pointer;
         }
 
+        /* --- Sidebar Styles --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            max-width: 300px; /* Optional: Set a max width for larger screens */
+            height: 100%;
+            background-color: var(--volus-green); /* Green background as in the image */
+            transform: translateX(-100%); /* Initially hidden off-screen to the left */
+            transition: transform 0.3s ease-in-out;
+            z-index: 999; /* Ensure it's on top of everything else */
+            padding-top: 20px; /* Space from the top */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            display: flex; /* Use flex for vertical stacking of items */
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            transform: translateX(0); /* Slide in */
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end; /* Push close icon to the right */
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header .close-icon {
+            font-size: 1.8em;
+            color: var(--light-text-color); /* White icon */
+            cursor: pointer;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1; /* Allow menu items to take available space */
+        }
+
+        .sidebar-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--light-text-color);
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar-menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-menu-item .icon {
+            font-size: 1.4em;
+            margin-right: 15px;
+            width: 30px; /* Fixed width for icons for alignment */
+            text-align: center;
+        }
+
+        .sidebar-app-info {
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: auto; /* Push to the bottom */
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-app-info .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .sidebar-logout {
+            padding: 15px 20px;
+            color: var(--light-text-color);
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-logout:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logout .icon {
+            font-size: 1.4em;
+            margin-right: 15px;
+            width: 30px; /* Fixed width for icons for alignment */
+            text-align: center;
+        }
+
+        /* --- Overlay for when sidebar is open --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            z-index: 998; /* Below sidebar, above main content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* --- Main Content Area --- */
         .main-content {
-            flex-grow: 1; /* Takes up available space */
+            flex-grow: 1;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* Needed for z-index if sidebar is behind */
+            z-index: 100; /* Below header */
         }
 
-        /* --- Balance Card --- */
+        /* Rest of your existing CSS (balance-card, action-grid, fab, etc.) */
         .balance-card {
             background-color: var(--dark-gray-card);
             color: var(--light-text-color);
             border-radius: var(--border-radius-card);
             padding: 20px;
             width: 100%;
-            max-width: 380px; /* Max width for the card */
+            max-width: 380px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px; /* Space below the card */
+            margin-bottom: 20px;
             box-sizing: border-box;
-            position: relative; /* For the "elo FLEXIVEL" badge */
+            position: relative;
         }
 
         .balance-card .saldo-title {
             font-size: 0.9em;
-            color: #ccc; /* Lighter grey for 'Saldo' */
+            color: #ccc;
             margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 8px; /* Space between dot and 'Saldo' */
+            gap: 8px;
         }
 
         .saldo-title .dot {
@@ -102,9 +226,11 @@
         }
 
         .balance-card .amount {
-            font-size: 2.2em; /* Larger for amount */
+            font-size: 1.1em;
             font-weight: bold;
             margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .balance-card .card-details {
@@ -117,48 +243,46 @@
         .balance-card .card-name,
         .balance-card .company-name {
             font-size: 0.9em;
-            color: #ccc; /* Lighter grey for name/company */
+            color: #ccc;
         }
 
         .elo-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #000; /* Black background for badge */
-            color: var(--volus-green); /* Green text for elo */
+            background-color: #000;
+            color: var(--volus-green);
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 0.8em;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 5px; /* Space between elo text and FLEXIVEL */
+            gap: 5px;
         }
         .elo-badge span {
-            color: #ffffff; /* White for FLEXIVEL */
+            color: #ffffff;
             font-size: 0.7em;
-            background-color: var(--volus-green); /* Green background for FLEXIVEL */
+            background-color: var(--volus-green);
             padding: 2px 5px;
             border-radius: 3px;
         }
 
-        /* --- Indicator Dot below card --- */
         .indicator-dot {
             width: 10px;
             height: 10px;
             background-color: var(--volus-green);
             border-radius: 50%;
-            margin-bottom: 30px; /* Space between dot and grid */
+            margin-bottom: 30px;
         }
 
-        /* --- Action Grid --- */
         .action-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns, equal width */
-            gap: 15px; /* Space between grid items */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
             width: 100%;
-            max-width: 400px; /* Max width for the grid container */
-            margin-bottom: 20px; /* Space above FAB if not fixed */
+            max-width: 400px;
+            margin-bottom: 20px;
         }
 
         .grid-item {
@@ -181,7 +305,7 @@
         }
 
         .grid-item .icon {
-            font-size: 2.2em; /* Size of action icons */
+            font-size: 2.2em;
             color: var(--volus-green);
             margin-bottom: 10px;
         }
@@ -192,34 +316,33 @@
             color: var(--text-color);
         }
 
-        /* --- Floating Action Button (FAB) Styles --- */
         .fab-container {
-            position: fixed; /* Fixed position relative to viewport */
-            bottom: 25px;    /* 25px from bottom */
-            right: 25px;     /* 25px from right */
-            z-index: 1000;   /* Ensure it's above other content */
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
         }
 
         .fab {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px; /* Size of the FAB */
+            width: 60px;
             height: 60px;
             background-color: var(--volus-green);
-            border-radius: 50%; /* Perfect circle */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         .fab:hover {
-            background-color: #60A53F; /* Darker green on hover */
+            background-color: #60A53F;
         }
 
         .fab .icon {
-            font-size: 1.8em; /* Size of the chat icon */
-            color: #ffffff; /* White icon color */
+            font-size: 1.8em;
+            color: #ffffff;
         }
 
         /* --- Media Queries for smaller screens --- */
@@ -240,7 +363,7 @@
                 padding: 15px;
             }
             .balance-card .amount {
-                font-size: 2em;
+                font-size: 1em;
             }
             .balance-card .card-details,
             .balance-card .card-name,
@@ -256,9 +379,9 @@
             }
 
             .action-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
-                max-width: 320px; /* Adjust grid max width for 2 columns */
+                max-width: 320px;
             }
             .grid-item .icon {
                 font-size: 1.8em;
@@ -268,12 +391,12 @@
                 font-size: 0.8em;
             }
             .fab-container {
-                bottom: 15px;
-                right: 15px;
+                bottom: 20px;
+                right: 20px;
             }
             .fab {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
             }
             .fab .icon {
                 font-size: 1.6em;
@@ -294,10 +417,10 @@
                 padding: 10px;
             }
             .balance-card .amount {
-                font-size: 1.8em;
+                font-size: 1.1em;
             }
             .action-grid {
-                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
                 max-width: 300px;
             }
@@ -331,15 +454,44 @@
             <img src="voluslogo2.png" alt="Vólus Logo">
         </div>
         <div class="icons-right">
-            <i class="fas fa-eye icon"></i> <i class="fas fa-bars icon"></i> </div>
+            <i class="fas fa-eye icon" id="toggleBalanceVisibility"></i>
+            <i class="fas fa-bars icon" id="openSidebar"></i> </div>
     </header>
 
-    <main class="main-content">
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-times close-icon" id="closeSidebar"></i>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+                <i class="fas fa-user icon"></i> Meus Dados
+            </li>
+            <li class="sidebar-menu-item">
+                <i class="fas fa-gavel icon"></i> Política
+            </li>
+            <li class="sidebar-menu-item">
+                <i class="fas fa-download icon"></i> Acesso Remoto
+            </li>
+            <li class="sidebar-menu-item">
+                <i class="fab fa-instagram icon"></i> @volusbeneficios
+            </li>
+            <li class="sidebar-menu-item">
+                <i class="fas fa-handshake icon"></i> Parceiros
+            </li>
+        </ul>
+        <div class="sidebar-app-info">
+            <i class="fas fa-info-circle icon"></i> Versão do app: 1.0.46
+        </div>
+        <div class="sidebar-logout">
+            <i class="fas fa-sign-out-alt icon"></i> Sair do aplicativo
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div> <main class="main-content">
         <div class="balance-card">
             <div class="saldo-title">
                 <span class="dot"></span> Saldo
             </div>
-            <div class="amount">R$ 5804,03</div>
+            <div class="amount" id="balanceAmount">R$ 5890,03</div>
             <div class="card-details">
                 <span>5090 .... .... 9227</span>
             </div>
@@ -354,30 +506,96 @@
 
         <div class="action-grid">
             <div class="grid-item">
-                <i class="fas fa-qrcode icon"></i> <div class="text">Pagar com QrCode</div>
+                <i class="fas fa-qrcode icon"></i>
+                <div class="text">Pagar com QrCode</div>
             </div>
             <div class="grid-item">
-                <i class="fas fa-credit-card icon"></i> <div class="text">Cartão Virtual</div>
+                <i class="fas fa-credit-card icon"></i>
+                <div class="text">Cartão Virtual</div>
             </div>
             <div class="grid-item">
-                <i class="fas fa-shopping-cart icon"></i> <div class="text">Vólus Shop</div>
+                <i class="fas fa-shopping-cart icon"></i>
+                <div class="text">Vólus Shop</div>
             </div>
             <div class="grid-item">
-                <i class="fas fa-list-alt icon"></i> <div class="text">Extrato</div>
+                <i class="fas fa-list-alt icon"></i>
+                <div class="text">Extrato</div>
             </div>
             <div class="grid-item">
-                <i class="fas fa-sliders-h icon"></i> <div class="text">Configurar Saldo Flexivel</div>
+                <i class="fas fa-sliders-h icon"></i>
+                <div class="text">Configurar Saldo Flexivel</div>
             </div>
             <div class="grid-item">
-                <i class="fas fa-shield-alt icon"></i> <div class="text">Nova Senha</div>
+                <i class="fas fa-shield-alt icon"></i>
+                <div class="text">Nova Senha</div>
             </div>
         </div>
     </main>
 
     <div class="fab-container">
         <div class="fab">
-            <i class="fas fa-comment-dots icon"></i> </div>
+            <i class="fas fa-comment-dots icon"></i>
+        </div>
     </div>
+
+    <script>
+        // Get references to the elements
+        const toggleBalanceIcon = document.getElementById('toggleBalanceVisibility');
+        const balanceAmountElement = document.getElementById('balanceAmount');
+        const openSidebarBtn = document.getElementById('openSidebar'); // Get the bar icon
+        const sidebar = document.getElementById('sidebar'); // Get the sidebar element
+        const closeSidebarBtn = document.getElementById('closeSidebar'); // Get the close icon
+        const overlay = document.getElementById('overlay'); // Get the overlay
+
+        // Store the original balance
+        const originalBalance = balanceAmountElement.textContent;
+        let isBalanceHidden = false; // Initial state: balance is visible
+
+        // Function to toggle balance visibility
+        toggleBalanceIcon.addEventListener('click', function() {
+            if (isBalanceHidden) {
+                // Show balance
+                balanceAmountElement.textContent = originalBalance;
+                toggleBalanceIcon.classList.remove('fa-eye-slash');
+                toggleBalanceIcon.classList.add('fa-eye');
+                isBalanceHidden = false;
+            } else {
+                // Hide balance
+                balanceAmountElement.textContent = 'R$ ••••••••';
+                toggleBalanceIcon.classList.remove('fa-eye');
+                toggleBalanceIcon.classList.add('fa-eye-slash');
+                isBalanceHidden = true;
+            }
+        });
+
+        // Function to open the sidebar
+        openSidebarBtn.addEventListener('click', function() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // Function to close the sidebar
+        closeSidebarBtn.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close sidebar when clicking outside (on the overlay)
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Optional: Close sidebar when a menu item is clicked
+        const sidebarMenuItems = document.querySelectorAll('.sidebar-menu-item, .sidebar-logout');
+        sidebarMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                // Add specific actions here based on the clicked item if needed
+            });
+        });
+    </script>
 
 </body>
 </html>

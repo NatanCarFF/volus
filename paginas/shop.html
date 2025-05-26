@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus Shop - Cadastro</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f0f0f0; /* Um fundo claro para a página */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinha o conteúdo ao topo */
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px; /* Largura máxima para o conteúdo da página */
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .form-card {
+            background-color: white;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 25px;
+            margin-top: -20px; /* Sobrepõe um pouco a imagem */
+            position: relative;
+            z-index: 1;
+        }
+        .form-card h2 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #333;
+        }
+        .form-card h2 span {
+            color: #4CAF50; /* Cor verde para "descontos exclusivos" */
+        }
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .input-group input {
+            width: calc(100% - 30px); /* Ajusta a largura do input */
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        .input-group label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #999;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #4CAF50;
+            background-color: white;
+            padding: 0 5px;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+        }
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+        }
+        .checkbox-group a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .register-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #777; /* Cor cinza para o botão */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        .register-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://natancarff.github.io/volus/paginas/home3.html" class="back-arrow">&#8592;</a>
+            <span class="header-title">Vólus Shop</span>
+        </div>
+        <img src="foto.png" alt="Vólus Shop - Homem usando celular" class="hero-image">
+        <div class="form-card">
+            <h2>Cadastre-se e ganhe <span>descontos exclusivos!</span></h2>
+            <form>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="senha" placeholder=" " required>
+                    <label for="senha">Senha</label>
+                    <span class="password-toggle" onclick="togglePassword('senha')">&#128065;</span>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="repetir-senha" placeholder=" " required>
+                    <label for="repetir-senha">Repita a Senha</label>
+                    <span class="password-toggle" onclick="togglePassword('repetir-senha')">&#128065;</span>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="aceito-termos" required>
+                    <label for="aceito-termos">Aceito o <a href="#">regulamento</a> e <a href="#">política de privacidade</a>.</label>
+                </div>
+                <button type="submit" class="register-button">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling; // Get the next sibling, which is the eye icon
+            if (input.type === "password") {
+                input.type = "text";
+                icon.innerHTML = "&#128064;"; // Closed eye icon
+            } else {
+                input.type = "password";
+                icon.innerHTML = "&#128065;"; // Open eye icon
+            }
+        }
+    </script>
+</body>
+</html>

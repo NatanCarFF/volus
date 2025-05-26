@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center; /* Center content vertically */
+            align-items: center;     /* Center content horizontally */
+            min-height: 100vh;       /* Take full viewport height */
+            margin: 0;               /* Remove default body margin */
+            background-color: #ffffff; /* White background */
+            font-family: Arial, sans-serif; /* Basic font for the button */
+        }
+
+        .logo-container {
+            margin-bottom: 50px; /* Space between logo and button */
+            /* You can adjust max-width to control the overall size of the logo */
+            max-width: 300px; /* Example: adjust this to your preferred size */
+            height: auto;
+        }
+
+        .logo-container img {
+            width: 100%;    /* Make the image fill its container */
+            height: auto;   /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+        }
+
+        .unlock-button {
+            padding: 15px 40px; /* Padding inside the button */
+            font-size: 1.2em;   /* Text size */
+            font-weight: bold;  /* Bold text */
+            color: #ffffff;     /* White text color */
+            background-color: #72B84D; /* Green color similar to the logo */
+            border: none;       /* No border */
+            border-radius: 8px; /* Slightly rounded corners */
+            cursor: pointer;    /* Change cursor to pointer on hover */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            text-decoration: none; /* Remove underline for anchor tag if used as a link */
+            display: inline-block; /* Allows padding and transitions for anchor tag */
+        }
+
+        .unlock-button:hover {
+            background-color: #60A53F; /* Slightly darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="path/to/your/volus_logo.png" alt="Vólus Logo">
+    </div>
+
+    <button class="unlock-button" onclick="redirectToGoogle()">Desbloquear</button>
+
+    <script>
+        function redirectToGoogle() {
+            window.location.href = "https://www.google.com";
+        }
+    </script>
+</body>
+</html>

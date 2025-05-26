@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo Flexível</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px; /* Largura típica para visualização de app móvel */
+            background-color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden; /* Evita rolagem horizontal da página inteira */
+        }
+
+        header {
+            background-color: #333; /* Fundo escuro do cabeçalho */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        header .title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        header .help-icon {
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .card-info {
+            background-color: #2c3e50; /* Fundo cinza-azulado escuro para info do cartão */
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-info .card-number {
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+
+        .card-info .flexivel-tag {
+            background-color: #27ae60; /* Tag verde */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .content-padding {
+            padding: 20px;
+        }
+
+        .beneficios-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .beneficios-carousel {
+            display: flex;
+            overflow-x: auto; /* Permite rolagem horizontal */
+            padding-bottom: 15px; /* Espaço para a barra de rolagem, se visível */
+            gap: 15px; /* Espaço entre os cartões */
+            -webkit-overflow-scrolling: touch; /* Para rolagem suave em iOS */
+        }
+
+        /* Esconde a barra de rolagem visualmente, mas mantém a funcionalidade */
+        .beneficios-carousel::-webkit-scrollbar {
+            display: none; /* Para Chrome, Safari, e Opera */
+        }
+        .beneficios-carousel {
+            -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
+            scrollbar-width: none;  /* Para Firefox */
+        }
+
+
+        .beneficio-card {
+            min-width: 130px; /* Largura mínima de cada cartão de benefício */
+            height: 120px;
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0; /* Impede que os cartões encolham, forçando a rolagem */
+        }
+
+        .beneficio-card .amount {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .beneficio-card .category-name {
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Cores dos cartões de benefício */
+        .alimentacao { background-color: #ff7f50; /* Coral (Laranja) */ }
+        .mobilidade { background-color: #e63946; /* Rosa/Magenta forte */ }
+        .multibeneficios { background-color: #007bff; /* Azul */ }
+        .refeicao { background-color: #d90429; /* Vermelho */ }
+
+        .limite-section {
+            margin-top: 25px;
+        }
+
+        .limite-item {
+            background-color: #f9f9f9; /* Fundo cinza claro para itens de limite */
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .limite-item .label {
+            color: #555;
+        }
+
+        .limite-item .value {
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://natancarff.github.io/volus/paginas/home3.html" class="back-arrow">&larr;</a>
+            <span class="title">Saldo Flexível</span>
+            <span class="help-icon">?</span>
+        </header>
+
+        <section class="card-info">
+            <span class="card-number">5090 **** **** 9227</span>
+            <span class="flexivel-tag">FLEXIVEL</span>
+        </section>
+
+        <div class="content-padding">
+            <h2 class="beneficios-title">Benefícios</h2>
+            <div class="beneficios-carousel">
+                <div class="beneficio-card alimentacao">
+                    <span class="amount">R$ 0,03</span>
+                    <span class="category-name">ALIMENTAÇÃO</span>
+                </div>
+                <div class="beneficio-card mobilidade">
+                    <span class="amount">R$ 0,00</span>
+                    <span class="category-name">MOBILIDADE</span>
+                </div>
+                <div class="beneficio-card multibeneficios">
+                    <span class="amount">R$ 0,00</span>
+                    <span class="category-name">MULTIBENEFÍCIO S</span>
+                </div>
+                <div class="beneficio-card refeicao">
+                    <span class="amount">R$ 0,00</span>
+                    <span class="category-name">REFEIÇÃO</span>
+                </div>
+            </div>
+
+            <section class="limite-section">
+                <div class="limite-item">
+                    <span class="label">Limite disponível</span>
+                    <span class="value">R$ 0,03</span>
+                </div>
+                <div class="limite-item">
+                    <span class="label">Limite total</span>
+                    <span class="value">R$ 216,32</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

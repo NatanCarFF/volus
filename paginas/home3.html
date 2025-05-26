@@ -287,7 +287,8 @@
             margin-bottom: 20px;
         }
 
-        .grid-item {
+        /* Styles for the grid items (now applied to the <a> tag) */
+        .action-grid a.grid-item { /* Target the anchor tag with the grid-item class */
             background-color: #ffffff;
             border-radius: var(--border-radius-button);
             padding: 15px 10px;
@@ -299,9 +300,11 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; /* Removes the underline */
+            color: inherit; /* Ensures the text color is inherited */
         }
 
-        .grid-item:hover {
+        .action-grid a.grid-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
@@ -436,7 +439,8 @@
                 gap: 8px;
                 max-width: 300px;
             }
-            .grid-item {
+            /* Apply padding directly to the anchor tag */
+            .action-grid a.grid-item {
                 padding: 12px 8px;
             }
             .grid-item .icon {
@@ -522,30 +526,30 @@
         <div class="indicator-dot"></div>
 
         <div class="action-grid">
-            <div class="grid-item">
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-qrcode icon"></i>
                 <div class="text">Pagar com QrCode</div>
-            </div>
-            <div class="grid-item">
+            </a>
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-credit-card icon"></i>
                 <div class="text">Cartão Virtual</div>
-            </div>
-            <div class="grid-item">
+            </a>
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-shopping-cart icon"></i>
-                <div class="text">Vólus Shop</div>
-            </div>
-            <div class="grid-item">
+                <div class="text">Loja Vólus</div>
+            </a>
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-list-alt icon"></i>
                 <div class="text">Extrato</div>
-            </div>
-            <div class="grid-item">
+            </a>
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-sliders-h icon"></i>
                 <div class="text">Configurar Saldo Flexivel</div>
-            </div>
-            <div class="grid-item">
+            </a>
+            <a href="https://www.google.com" class="grid-item">
                 <i class="fas fa-shield-alt icon"></i>
                 <div class="text">Nova Senha</div>
-            </div>
+            </a>
         </div>
     </main>
 

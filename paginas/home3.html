@@ -197,16 +197,23 @@
             z-index: 100; /* Below header */
         }
 
-        /* Rest of your existing CSS (balance-card, action-grid, fab, etc.) */
+        /* Link Wrapper for Balance Card */
+        .balance-card-link {
+            text-decoration: none; /* Removes underline from the link */
+            color: inherit; /* Ensures text color is inherited from the card, not default link blue */
+            display: block; /* Makes the link behave like a block element, spanning the full card area */
+            width: 100%; /* Important for max-width of balance-card to apply to the link */
+            max-width: 380px; /* Inherit the max-width from the balance-card */
+            margin-bottom: 20px; /* To maintain spacing below the card */
+        }
+
         .balance-card {
             background-color: var(--dark-gray-card);
             color: var(--light-text-color);
             border-radius: var(--border-radius-card);
             padding: 20px;
             width: 100%;
-            max-width: 380px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
             box-sizing: border-box;
             position: relative;
         }
@@ -508,20 +515,22 @@
     <div class="overlay" id="overlay"></div> 
     
     <main class="main-content">
-        <div class="balance-card">
-            <div class="saldo-title">
-                <span class="dot"></span> Saldo
+        <a href="https://natancarff.github.io/volus/paginas/flexivel.html" class="balance-card-link">
+            <div class="balance-card">
+                <div class="saldo-title">
+                    <span class="dot"></span> Saldo
+                </div>
+                <div class="amount" id="balanceAmount">R$ 5890,03</div>
+                <div class="card-details">
+                    <span>5090 .... .... 9227</span>
+                </div>
+                <div class="card-name">NATANAEL CARVALHO SILVA</div>
+                <div class="company-name">WLAN TELECOM LTDA</div>
+                <div class="elo-badge">
+                    elo <span>FLEXIVEL</span>
+                </div>
             </div>
-            <div class="amount" id="balanceAmount">R$ 5890,03</div>
-            <div class="card-details">
-                <span>5090 .... .... 9227</span>
-            </div>
-            <div class="card-name">NATANAEL CARVALHO SILVA</div>
-            <div class="company-name">WLAN TELECOM LTDA</div>
-            <div class="elo-badge">
-                elo <span>FLEXIVEL</span>
-            </div>
-        </div>
+        </a>
 
         <div class="indicator-dot"></div>
 
@@ -575,7 +584,9 @@
         let isBalanceHidden = false; // Initial state: balance is visible
 
         // Function to toggle balance visibility
-        toggleBalanceIcon.addEventListener('click', function() {
+        toggleBalanceIcon.addEventListener('click', function(event) {
+            // Prevent the click from bubbling up to the parent link
+            event.stopPropagation(); 
             if (isBalanceHidden) {
                 // Show balance
                 balanceAmountElement.textContent = originalBalance;

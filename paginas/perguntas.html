@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header .back-arrow-link { /* Added a class for the link */
+            text-decoration: none; /* Remove underline from the link */
+            display: flex; /* To align the icon properly within the link */
+            align-items: center;
+        }
+        .header .material-icons {
+            color: #4CAF50; /* Green color for the arrow */
+            font-size: 28px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        .header h1 {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0;
+            color: #333;
+        }
+        .faq-list {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .faq-item {
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .faq-item-header:hover {
+            background-color: #f5f5f5;
+        }
+        .faq-item-header h2 {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 0;
+            color: #333;
+        }
+        .faq-item-header .material-icons {
+            color: #999;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        .faq-item-header.expanded .material-icons {
+            transform: rotate(180deg);
+        }
+        .faq-item-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #555;
+            font-size: 14px;
+        }
+        .faq-item-content p {
+            padding-bottom: 15px;
+        }
+        .faq-item-content.open {
+            max-height: 100px; /* Adjust based on content */
+            padding-top: 15px;
+        }
+        .contact-button-container {
+            padding: 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .contact-button:hover {
+            background-color: #45a049;
+        }
+        .contact-button .material-icons {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://natancarff.github.io/volus/paginas/home3.html" class="back-arrow-link">
+            <span class="material-icons">arrow_back</span>
+        </a>
+        <h1>Perguntas Frequentes</h1>
+    </div>
+
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>PIN bloqueado e agora?</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "PIN bloqueado e agora?".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Esqueceu a senha do cartão?</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Esqueceu a senha do cartão?".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Bloquear ou desbloquear cartão ELO?</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Bloquear ou desbloquear cartão ELO?".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Solicitação de 2ª via cartão</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Solicitação de 2ª via cartão".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Precisa alterar número de telefone do app</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Precisa alterar número de telefone do app".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>TED</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "TED".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Saque</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Saque".</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-item-header">
+                <h2>Como acessar o comprovante de um pagamento?</h2>
+                <span class="material-icons">expand_more</span>
+            </div>
+            <div class="faq-item-content">
+                <p>Conteúdo da resposta para "Como acessar o comprovante de um pagamento?".</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-button-container">
+        <a href="#" class="contact-button">
+            <span class="material-icons">chat</span>
+            Fale conosco
+        </a>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-item-header').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.closest('.faq-item');
+                const content = faqItem.querySelector('.faq-item-content');
+                const icon = item.querySelector('.material-icons');
+
+                // Toggle the 'open' class for content and 'expanded' for header/icon
+                content.classList.toggle('open');
+                item.classList.toggle('expanded'); // For rotating the icon
+
+                // Adjust max-height for smooth transition
+                if (content.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = "0";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

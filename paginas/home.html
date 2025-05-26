@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vólus App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scrollbar if floating button causes it */
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px; /* Padding around header content */
+            width: 100%;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .header .logo-container {
+            max-width: 100px; /* Adjust logo size in header */
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .header .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .header .icons-right {
+            display: flex;
+            align-items: center;
+            gap: 25px; /* Space between eye and hamburger icons */
+        }
+
+        .header .icon {
+            font-size: 1.6em; /* Size of the icons */
+            color: #333333; /* Darker color for icons */
+            cursor: pointer;
+        }
+
+        /* --- Main Content (Loading Spinner) Styles --- */
+        .main-content {
+            flex-grow: 1; /* Takes up all available space between header and bottom */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .loading-spinner {
+            border: 5px solid #f3f3f3; /* Light grey base */
+            border-top: 5px solid #72B84D; /* Green spinner part */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Floating Action Button (FAB) Styles --- */
+        .fab-container {
+            position: fixed; /* Fixed position relative to viewport */
+            bottom: 25px;    /* 25px from bottom */
+            right: 25px;     /* 25px from right */
+            z-index: 1000;   /* Ensure it's above other content */
+        }
+
+        .fab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px; /* Size of the FAB */
+            height: 60px;
+            background-color: #72B84D; /* Green color */
+            border-radius: 50%; /* Perfect circle */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .fab:hover {
+            background-color: #60A53F; /* Darker green on hover */
+        }
+
+        .fab .icon {
+            font-size: 1.8em; /* Size of the chat icon */
+            color: #ffffff; /* White icon color */
+        }
+
+        /* --- Media Queries for smaller screens (mobile adjustments) --- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+            }
+            .header .logo-container {
+                max-width: 80px; /* Smaller logo on mobile */
+            }
+            .header .icon {
+                font-size: 1.4em; /* Slightly smaller icons */
+            }
+            .fab-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            .fab {
+                width: 55px;
+                height: 55px;
+            }
+            .fab .icon {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="voluslogo2.png" alt="Vólus Logo">
+        </div>
+        <div class="icons-right">
+            <i class="fas fa-eye icon"></i> <i class="fas fa-bars icon"></i> </div>
+    </header>
+
+    <main class="main-content">
+        <div class="loading-spinner"></div>
+    </main>
+
+    <div class="fab-container">
+        <div class="fab">
+            <i class="fas fa-comment-dots icon"></i> </div>
+    </div>
+
+</body>
+</html>
